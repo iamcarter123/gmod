@@ -20,6 +20,7 @@ if(isset($_POST["action"]) && $_POST["action"] == "changetemplate") {
         $query2 = sprintf("UPDATE templates SET template = '%s' WHERE username = '%s'", mysqli_real_escape_string($db, $_POST["template"]), mysqli_real_escape_string($db, $_POST["username"]));
     }
     mysqli_query($db, $query2);
+    echo 1;
 }
 
 ?>
