@@ -136,200 +136,110 @@
         "n20": {
           "rule": "20.) Tilos a kábítószer, szerencsejáték, és más tiltott szerek használatának népszerűsítése.",
           "penalty": "Büntetés: 50 büntetőpont - örökös kitiltás.",
+        },
+        "n21": {
+          "rule": "21.) Tilos pornográf, illetve egyéb felnőtt kategóriás képek, videók elhelyezése!\n↳ (Felnőtt tartalomhoz, kivégzések és egyéb horrorisztikus dolgok kapcsolódnak. Amennyiben ilyet tüntetsz fel mindenképp tedd spoilerbe, és jelezd, hogy 18+-os tartalom!)",
+          "penalty": "Büntetés: 100 büntetőpont - örökös kitiltás.",
+        },
+
+        "n22": {
+          "rule": "22.) A fórumon kötelező feltüntetni az IG nevedet. Legalább egy szerveren lévő karaktered nevét kell feltüntenti a profilodon. A megfelelő részlegbe csak akkor írhatsz, ha az ahhoz tartozó karaktered neve meg van adva.\n↳ (Pl: Ha V3 részlegbe akarsz írni akkor köteles vagy a V3 karakterneved feltüntetni.)",
+          "penalty": "Örökös kitiltás míg nincs feltüntetve a neved, keress fel egy globális moderátort!",
+        },
+        "n23": {
+          "rule": "23.) A felhasználói profil megjegyzéseknél kötelező az egy szónál hosszabb hozzászólás!",
+          "penalty": "Büntetés: 30 büntetőpont.",
+        },
+        "n24": {
+          "rule": "24.) A fórum profilképed, borítóképed nem tartalmazhat +18-as tartalmat, illetve nem használható játékosok lejáratására.",
+          "penalty": "1 hét kitiltás +  profilkép/borítókép eltávolítása.",
+        },
+        "n25": {
+          "rule": "25.) Bizonyíték hiányában ne nyiss panaszt!",
+          "penalty": "Felszólítás bizonyíték csatolására, ha ez nem történik meg 24 órán belül, 40 büntetőpont, téma zárása.",
+        },
+        "n26": {
+          "rule": "26.) A bizonyíték képet tilos szerkeszteni, azt eredeti állapotban kell beadni!",
+          "penalty": "Felszólítás bizonyíték csatolására, ha ez nem történik meg 24 órán belül, 40 büntetőpont, téma zárása.",
+        },
+        "n27": {
+          "rule": "27.) A panaszhoz kizárólag a bíráló szerver adminisztrátor, panasz tevő, vádlott írhat hozzá!\n↳ (Leader, szemtanú, TS-en jelenlévők, IC családtag nem tartozik bele a jelenlévő fogalmába, csak, ha jelen voltál és meg vagy említve a panaszban, illetve ha admin kéri, hogy írj hozzá.)",
+          "penalty": "Büntetés: 100 büntetőpont.",
+        },
+        "n28": {
+          "rule": "28.)  Unban kérelemhez kizárólag a bíráló adminisztrátor, illetve magát a kérelmet megíró személy szólhat hozzá!\n↳ (Leader, haver, TS-en jelenlévők, IC családtag nem szólhat hozzá az unban kérelemhez, kivéve ha admin kéri!)",
+          "penalty": "Büntetés: 100 büntetőpont.",
+        },
+        "n29": {
+          "rule": "29.)   Hetente csak egy UB (unban) kérelmet lehet írni.\n↳ (Az unban kérelem lezárásától számított egy hét múlva nyitható új kérelem.)",
+          "penalty": "Büntetés: 7-14 nap kitiltás.",
         }
         
 
       }
 
-      function ruleclick(number) {
-        //console.log(rules[number+"rule"])
-        let rulenumber = "n"+number
-        input.val(rules.number.rule)
-      }
-
     </script>
     <title>GMOD helper</title>
-    <style>
-        body {
-            background-image: url(assets/bg.jpg);
-            background-position: center center;
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            color: #FFF;
-            margin-top: 4%;
-            margin-right: 2%;
-            margin-left: 2%;
-        }
-
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #c2c2c2;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #3d3d40;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #007bff;
-        }
-        .ajs-message.ajs-error {
-            position: relative !important;
-            padding: 0.75rem 1.25rem !important;
-            margin-bottom: 1rem !important;
-            border: 1px solid transparent !important;
-            border-radius: 0.25rem !important;
-            color: #FFFFFF !important;
-            background-color: #dc3545 !important;
-            border-color: #dc3545 !important;
-        }
-        .ajs-message.ajs-success {
-            position: relative !important;
-            padding: 0.75rem 1.25rem !important;
-            margin-bottom: 1rem !important;
-            border: 1px solid transparent !important;
-            border-radius: 0.25rem !important;
-            color: #FFFFFF !important;
-            background-color: #198754 !important;
-            border-color: #198754 !important;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>GMOD üzenet generáló</h1>
     <p class="lead text-warning visually-hidden" id="nousername">Nincsen megadva felhasználónév a oldalon, a működéshez kérlek adj meg egyet!</p>
     <input class="form-control w-25 mb-3 visually-hidden" type="text" id="usernamec" placeholder="Felhasználónév">
     <button class="btn btn-primary mb-3 visually-hidden" id="submitusername">Beadás</button>
-
     <textarea id="szoveg" type="text" class="form-control w-50" placeholder="Szöveg"></textarea>
     <br>
     <button id="copyinput" class="btn btn-primary">Másolás</button>
     <br><br>
     <button id="igname" class="btn btn-primary">Nem aktuális IG név</button>
-    <br><br>
     <button id="noigname" class="btn btn-primary">Nincs IG név (banhoz)</button>
     <br><br>
     <select id="rules" class="form-select w-50">
-      <option>-</option>
+      <option>Szabálypontok</option>
       <script>
-        var sel = document.getElementById('rules');
+        var select = document.getElementById('rules');
         for (var key in rules) {
             if (rules.hasOwnProperty(key)) {
                 var opt = document.createElement('option');
                 opt.value = key;
                 opt.innerHTML = rules[key].rule + " | " + rules[key].penalty;
-                sel.appendChild(opt);
+                select.appendChild(opt);
             }
         }
-        document.body.appendChild(sel);
+        document.body.appendChild(select);
       </script>
       </select>
     <br>
     <button class="btn btn-warning" onclick="delCookie('username');location.reload()">Felhasználónév váltása</button>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#templateModal">Minta változtatása</button>
 
-    <!--<div class="modal fade text-black" id="hibasmintaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade text-dark" id="templateModal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" >Hibás név</h5>
+            <h5 class="modal-title">Minta változtatása</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <label for="mintatopic">Minta:</label>
-            <input class="form-control" type="text" id="mintatopic">
+            <p>Írd be a mintát, majd pedig ahova a szöveg menjen használd a <code>%message</code> változót, ahova pedig a neved oda meg a <code>%username</code> változót!</p>
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Minta" id="textarea_changetemplate" style="height: 100px"></textarea>
+              <label for="textarea_changetemplate">Minta</label>
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
-            <button type="button" class="btn btn-primary" id="copyminta">Másolás</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+            <button type="button" class="btn btn-primary" id="save_templatechange">Mentés</button>
           </div>
         </div>
       </div>
-    </div>-->
+    </div>
 
-    <script>
-
-      function ctc(text) {
-          var sampleTextarea = document.createElement("textarea");
-          document.body.appendChild(sampleTextarea);
-          sampleTextarea.value = text; //save main text in it
-          sampleTextarea.select(); //select textarea contenrs
-          document.execCommand("copy");
-          document.body.removeChild(sampleTextarea);
-          console.log("ctc")
-      }
-
-      function sbc(button, color1, color2, aftertext) { //setbuttoncolor, ha rányom változtatta meg egy adott színre
-        $("button#" + button).removeClass(color1).addClass(color2).text("Kimásolva!")
-        setTimeout(function () {
-          $("button#" + button).removeClass(color2).addClass(color1).text(aftertext)
-        }, 3000)
-      }
-
-
-      const input = $("#szoveg");
-      const copybutton = $("#copyinput")
-
-      /*$("button#copyminta").on("click", function() {
-        let minta = $("input#mintatopic").val();
-        var aa = "Csáó, kérlek nyisd újra a topicot a megfelelő mintával, ezt zárom/helyezem.\r\n[URL='https://forum.see-game.com/threads/minta-helyes-hasznalata.360/]'Segítség a minta használatához[/URL]\r\n[URL='https://forum.see-game.com/threads/orfk-jelentkezes-minta.17627/']Minta[/URL]\r\n[SPOILER='Szabályzati pont']\r\n[SIZE=4][COLOR=rgb(97, 189, 109)][B]14.)[/B][/COLOR] [I]Ahol van MINTA ott köteles vagy azt használni! A topik címére is figyelj oda, azt is megfelelően add meg! A BB kódolás szintúgy a minta része, ennek hiányában is figyelmeztetést lehet kapni!\r\n[COLOR=rgb(97, 189, 109)][B]Büntetés:[/B][/COLOR] [/I][COLOR=rgb(209, 72, 65)][B][I]30 [/I][/B][I][B]büntetőpont[/B][/I][B][I].[/I][/B][/COLOR][/SIZE][/SPOILER]";
-        //console.log(aa)
-        //ctc(aa)
-        input.val(aa);
-        copybutton.click();
-        alertify.success("Sikeresen kimásoltad a GMOD2 textet.")
-      })*/
-
-      $("button#copyinput").on("click", function() {
-
-        let def = "[" + "QUOTE" + "]" + "[" + "CENTER" + "]" + input.val() + " [" + "COLOR=rgb(147, 101, 184)]@" + username + "[/COLOR][/CENTER" + "]" +"[/QUOTE]";
-
-        ctc(def)
-        alertify.success("Sikeresen kimásoltad a GMOD textet.")
-        sbc("copyinput", "btn-primary", "btn-success", "Másolás")
-      })
-
-      $("button#igname").on("click", function () {
-        input.val("Profilodon jelenleg nem az aktuális IG neved van megadva, ennek javítására 12 órád van.");
-        copybutton.click();
-      })
-
-      $("button#noigname").on("click", function () {
-        ctc("4.) A fórumon kötelező feltüntetni az IG nevedet. A megfelelő részlegbe csak akkor írhatsz, ha az ahhoz tartozó karaktered neve meg van adva. Keress fel egy Globális Moderátort TS-en vagy Discordon. (V2) @" + username);
-        sbc("noigname", "btn-primary", "btn-success", "Nincs IG név (banhoz)");
-      })
-
-      $("button#copyminta").on("click", function() {
-        input.val("Csáó, kérlek nyisd újra a topicot a megfelelő mintával, ezt zárom/helyezem.\r\n[URL='https://forum.see-game.com/threads/minta-helyes-hasznalata.360/]'Segítség a minta használatához[/URL]\r\n[URL='https://forum.see-game.com/threads/orfk-jelentkezes-minta.17627/']Minta[/URL]\r\n[SPOILER='Szabályzati pont']\r\n[SIZE=4][COLOR=rgb(97, 189, 109)][B]14.)[/B][/COLOR] [I]Ahol van MINTA ott köteles vagy azt használni! A topik címére is figyelj oda, azt is megfelelően add meg! A BB kódolás szintúgy a minta része, ennek hiányában is figyelmeztetést lehet kapni!\r\n[COLOR=rgb(97, 189, 109)][B]Büntetés:[/B][/COLOR] [/I][COLOR=rgb(209, 72, 65)][B][I]30 [/I][/B][I][B]büntetőpont[/B][/I][B][I].[/I][/B][/COLOR][/SIZE][/SPOILER]");
-        input.val("asasdasd")
-        copybutton.click();
-      })
-
-      $("#rules").on("change", function() {
-        input.val(rules[$(this).val()].rule + "\n"+rules[$(this).val()].penalty)
-        copybutton.click();
-      })
-
-      
-      if(getCookie("username") == null) {
-        console.log("a")
-        $("#nousername").removeClass("visually-hidden")
-        $("#usernamec").removeClass("visually-hidden")
-        $("#submitusername").removeClass("visually-hidden")
-      }
-
-      $("#submitusername").on("click", function() {
-        setCookie("username", $("#usernamec").val(), "1200");
-        location.reload();
-      })
-      
-
-      
-    
-    </script>
+  <script src="script.js"></script>
+  
+  <div class="card-footer text-muted bg-dark" style="position: fixed; left: 0; bottom: 0; width: 100%;">
+  Made by Carter | Powered by: <a href="https://sctve.hu">sctve.hu</a> | <span class="badge bg-primary" id="ver"></span>
+  </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
