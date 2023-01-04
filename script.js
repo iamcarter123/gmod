@@ -1,5 +1,47 @@
+//------------- Cookiemanager -------------\\
+function setCookie(name,value,days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function delCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+//------------- Username handling -------------\\
+if(getCookie("username") == null) {
+  $("#nousername").removeClass("visually-hidden")
+  $("#usernamec").removeClass("visually-hidden")
+  $("#submitusername").removeClass("visually-hidden")
+}
+
+$("#submitusername").on("click", function() {
+  setCookie("username", $("#usernamec").val(), "1200");
+  location.reload();
+})
+
+//------------- Template loader -------------\\
+
+const username = getCookie("username");
+const textarea = $("#textarea_changetemplate");
+const input = $("#szoveg");
+const copybutton = $("#copyinput");
+
 $(document).ready(function() {
-    var textarea = $("#textarea_changetemplate");
       $.ajax({
       url: "assets/api.php",
       type: "POST",
@@ -16,6 +58,8 @@ $(document).ready(function() {
       }
     })
 });
+
+//------------- Template change -------------\\
 
 $("#save_templatechange").on("click", function() {
   $.ajax({
@@ -36,6 +80,8 @@ $("#save_templatechange").on("click", function() {
   })
 })
 
+//------------- Components (Copy to clipboard, set button color) -------------\\
+
 function ctc(text) {
     var sampleTextarea = document.createElement("textarea");
     document.body.appendChild(sampleTextarea);
@@ -52,12 +98,11 @@ function sbc(button, color1, color2, aftertext) { //setbuttoncolor, ha rányom v
   }, 3000)
 }
 
-
-const input = $("#szoveg");
-const copybutton = $("#copyinput")
-
+//------------- Buttons -------------\\
 
 $("button#copyinput").on("click", function() {
+
+  if(!input.val()) return alertify.error("Ne hagyd üresen a mezőt!")
 
   $.ajax({
     url: "assets/api.php",
@@ -77,8 +122,6 @@ $("button#copyinput").on("click", function() {
       sbc("copyinput", "btn-primary", "btn-success", "Másolás")
     }
   })
-
-  //var def = "[" + "QUOTE" + "]" + "[" + "CENTER" + "]" + input.val() + " [" + "COLOR=rgb(147, 101, 184)]@" + username + "[/COLOR][/CENTER" + "]" +"[/QUOTE]";
 
 })
 
@@ -103,20 +146,8 @@ $("#rules").on("change", function() {
   copybutton.click();
 })
 
-
-if(getCookie("username") == null) {
-  $("#nousername").removeClass("visually-hidden")
-  $("#usernamec").removeClass("visually-hidden")
-  $("#submitusername").removeClass("visually-hidden")
-}
-
-$("#submitusername").on("click", function() {
-  setCookie("username", $("#usernamec").val(), "1200");
-  location.reload();
-})
-
-
+//------------- Version controll -------------\\
 
 fetch('ver.gmod')
-.then(response => response.text())
-.then(text => $("#ver").html(text))
+  .then(response => response.text())
+  .then(text => $("#ver").html(text))
